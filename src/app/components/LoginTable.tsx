@@ -11,6 +11,14 @@ interface LoginData {
   loginAt: string;
 }
 
+interface RawLoginData {
+  name: string;
+  email: string;
+  location: string;
+  device: string;
+  login_time: string;
+}
+
 const LoginTable = () => {
   const [logins, setLogins] = useState<LoginData[]>([]);
 
@@ -20,9 +28,9 @@ const LoginTable = () => {
         const res = await fetch(
           "https://be-insight-board.onrender.com/api/recent-logins"
         );
-        const data = await res.json();
+        const data: RawLoginData[] = await res.json();
 
-        const mappedData = data.map((item: any, index: number) => ({
+        const mappedData: LoginData[] = data.map((item, index) => ({
           id: index + 1,
           name: item.name,
           email: item.email,

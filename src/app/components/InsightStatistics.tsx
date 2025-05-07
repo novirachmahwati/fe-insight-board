@@ -7,7 +7,7 @@ interface StatItem {
   title: string;
   label: string;
   percentage: number;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   color: string;
 }
 
